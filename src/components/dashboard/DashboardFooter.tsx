@@ -1,5 +1,3 @@
-import { ExternalLink } from "lucide-react";
-
 export const DashboardFooter = () => {
   return (
     <footer className="mt-auto py-6 border-t border-border">
@@ -17,7 +15,6 @@ export const DashboardFooter = () => {
             <span className="text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               tantravruksha.dev
             </span>
-            <ExternalLink className="h-4 w-4 text-foreground/60 group-hover:text-primary transition-colors" />
           </a>
         </div>
       </div>
