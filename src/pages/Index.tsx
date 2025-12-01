@@ -108,9 +108,10 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-8 flex-1">
-        <DashboardHeader isLive={isLive} />
+    <div className="h-screen bg-background flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-y-auto">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
+          <DashboardHeader isLive={isLive} />
 
         {/* Stats Cards */}
         {loading ? (
@@ -151,20 +152,21 @@ const Index = () => {
           </div>
         )}
 
-        {/* Submissions Table */}
-        {loading ? (
-          <div className="h-96 rounded-xl bg-card border border-border animate-pulse" />
-        ) : (
-          <div className="bg-card rounded-xl border border-border p-3 sm:p-6 shadow-lg">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-foreground">
-              All Submissions
-            </h2>
-            <SubmissionsTable
-              submissions={submissions}
-              onUpdate={fetchSubmissions}
-            />
-          </div>
-        )}
+          {/* Submissions Table */}
+          {loading ? (
+            <div className="h-96 rounded-xl bg-card border border-border animate-pulse" />
+          ) : (
+            <div className="bg-card rounded-xl border border-border p-3 sm:p-4 md:p-6 shadow-lg">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 md:mb-6 text-foreground">
+                All Submissions
+              </h2>
+              <SubmissionsTable
+                submissions={submissions}
+                onUpdate={fetchSubmissions}
+              />
+            </div>
+          )}
+        </div>
       </div>
       <DashboardFooter />
     </div>
