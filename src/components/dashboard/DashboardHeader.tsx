@@ -13,12 +13,19 @@ export const DashboardHeader = ({ isLive }: DashboardHeaderProps) => {
 
   const handleLogout = async () => {
     try {
-      await supabase.auth.signOut();
-      toast.success("Logged out successfully");
-      navigate("/login");
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.error("Logout error:", error);
+        toast.error("Failed to logout, redirecting to login page.");
+      } else {
+        toast.success("Logged out successfully");
+      }
     } catch (error) {
-      console.error("Logout error:", error);
-      toast.error("Failed to logout");
+      console.error("Unexpected logout error:", error);
+      toast.error("Failed to logout, redirecting to login page.");
+    } finally {
+      navigate("/login");
     }
   };
 
