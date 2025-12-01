@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Tables } from "@/integrations/supabase/types";
+import type { Session } from "@supabase/supabase-js";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { SubmissionsTable } from "@/components/dashboard/SubmissionsTable";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
@@ -16,7 +17,7 @@ const Index = () => {
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [isLive, setIsLive] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
 
   const fetchSubmissions = async () => {
     try {
@@ -36,23 +37,19 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Check authentication
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, currentSession) => {
+      setSession(currentSession);
+      if (!currentSession) {
         navigate("/login");
-        return;
       }
-      setIsAuthenticated(true);
-    };
+    });
 
-    checkAuth();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) {
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
+      setSession(currentSession);
+      if (!currentSession) {
         navigate("/login");
-      } else {
-        setIsAuthenticated(true);
       }
     });
 
@@ -60,7 +57,7 @@ const Index = () => {
   }, [navigate]);
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!session) return;
     
     fetchSubmissions();
 
@@ -91,7 +88,7 @@ const Index = () => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [isAuthenticated]);
+  }, [session]);
 
   const stats = {
     total: submissions.length,
@@ -103,7 +100,7 @@ const Index = () => {
     ).length,
   };
 
-  if (!isAuthenticated) {
+  if (!session) {
     return null;
   }
 
