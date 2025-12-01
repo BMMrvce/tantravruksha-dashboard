@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,7 +24,7 @@ All colors MUST be HSL.
     --popover-foreground: 0 0% 9%;
 
     --primary: 243 75% 58%;
-    --primary-foreground: 225 100% 96%;
+    --primary-foreground: 221 39.2857% 10.9804%;
 
     --secondary: 0 0% 32%;
     --secondary-foreground: 0 0% 98%;
