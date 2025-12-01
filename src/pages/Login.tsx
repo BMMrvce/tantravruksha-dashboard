@@ -69,7 +69,8 @@ const Login = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mb-4">
             <Shield className="h-8 w-8 text-primary-foreground" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-foreground mb-1">7colorbow</h2>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Dashboard Login
           </h1>
           <p className="text-muted-foreground">
