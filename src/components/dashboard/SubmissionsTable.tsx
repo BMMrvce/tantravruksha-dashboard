@@ -64,16 +64,16 @@ export const SubmissionsTable = ({ submissions, onUpdate }: SubmissionsTableProp
         </div>
       </div>
 
-      <div className="rounded-lg border border-border overflow-hidden bg-card">
+      <div className="rounded-lg border border-border overflow-x-auto bg-card">
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead>Name</TableHead>
-              <TableHead>Contact</TableHead>
-              <TableHead>Message</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="min-w-[120px]">Name</TableHead>
+              <TableHead className="min-w-[200px]">Contact</TableHead>
+              <TableHead className="min-w-[250px]">Message</TableHead>
+              <TableHead className="min-w-[120px]">Date</TableHead>
+              <TableHead className="min-w-[100px]">Status</TableHead>
+              <TableHead className="text-right min-w-[120px]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

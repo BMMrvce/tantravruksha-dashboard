@@ -109,12 +109,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-8 flex-1">
         <DashboardHeader isLive={isLive} />
 
         {/* Stats Cards */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {[...Array(4)].map((_, i) => (
               <div
                 key={i}
@@ -123,7 +123,7 @@ const Index = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             <StatsCard
               title="Total Submissions"
               value={stats.total}
@@ -155,8 +155,8 @@ const Index = () => {
         {loading ? (
           <div className="h-96 rounded-xl bg-card border border-border animate-pulse" />
         ) : (
-          <div className="bg-card rounded-xl border border-border p-6 shadow-lg">
-            <h2 className="text-2xl font-semibold mb-6 text-foreground">
+          <div className="bg-card rounded-xl border border-border p-3 sm:p-6 shadow-lg">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-foreground">
               All Submissions
             </h2>
             <SubmissionsTable
