@@ -5,6 +5,7 @@ import { Tables } from "@/integrations/supabase/types";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { SubmissionsTable } from "@/components/dashboard/SubmissionsTable";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { DashboardFooter } from "@/components/dashboard/DashboardFooter";
 import { MailOpen, CheckCircle2, Clock, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 
@@ -107,8 +108,8 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="min-h-screen bg-background flex flex-col">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1">
         <DashboardHeader isLive={isLive} />
 
         {/* Stats Cards */}
@@ -165,6 +166,7 @@ const Index = () => {
           </div>
         )}
       </div>
+      <DashboardFooter />
     </div>
   );
 };
